@@ -21,3 +21,7 @@ elementAt :: [a] -> Int -> a
 elementAt [] _ = error "List is empty"
 elementAt (x:xs) 1 = x
 elementAt (x:xs) i = elementAt xs (i-1)
+
+-- foldSum
+foldSum :: [Integer] -> Integer
+foldSum = foldl1 (+)
