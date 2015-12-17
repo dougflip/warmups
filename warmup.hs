@@ -6,21 +6,33 @@ quicksort (x:xs) = (quicksort lower) ++ [x] ++ (quicksort higher)
         lower = filter (<x) xs
         higher = filter (>=x) xs
 
+-- recurseLast
+recurseLast :: [a] -> a
+recurseLast [x] = x
+recurseLast (x:xs) = recurseLast xs
+
 -- myLast
 myLast :: [a] -> a
-myLast [x] = x
-myLast (x:xs) = myLast xs
+myLast = head . reverse
+
+-- recurseButLast
+recurseButLast :: [a] -> a
+recurseButLast [x,y] = x
+recurseButLast (x:xs) = recurseButLast xs
 
 -- myButLast
 myButLast :: [a] -> a
-myButLast [x,y] = x
-myButLast (x:xs) = myButLast xs
+myButLast = head . drop 1 . reverse
+
+-- recurseElementAt
+recurseElementAt :: [a] -> Int -> a
+recurseElementAt [] _ = error "List is empty"
+recurseElementAt (x:xs) 1 = x
+recurseElementAt (x:xs) i = recurseElementAt xs (i-1)
 
 -- elementAt
-elementAt :: [a] -> Int -> a
-elementAt [] _ = error "List is empty"
-elementAt (x:xs) 1 = x
-elementAt (x:xs) i = elementAt xs (i-1)
+elementAt :: Int -> [a] -> a
+elementAt i xs = head $ drop (i-1) xs
 
 -- foldSum
 foldSum :: [Integer] -> Integer
