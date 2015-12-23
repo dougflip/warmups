@@ -37,3 +37,10 @@ elementAt i xs = head $ drop (i-1) xs
 -- foldSum
 foldSum :: [Integer] -> Integer
 foldSum = foldl1 (+)
+
+-- toDigits
+toDigits :: Int -> [Int]
+toDigits = map digitToInt . show
+
+doubleSecond :: [Int] -> [Int]
+doubleSecond = map (\(x,y) -> if even x then y*2 else y) . zip [1..]
