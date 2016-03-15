@@ -1,3 +1,5 @@
+import Data.Char
+
 -- quicksort
 quicksort :: Ord a => [a] -> [a]
 quicksort [] = []
@@ -43,4 +45,4 @@ toDigits :: Int -> [Int]
 toDigits = map digitToInt . show
 
 doubleSecond :: [Int] -> [Int]
-doubleSecond = map (\(x,y) -> if even x then y*2 else y) . zip [1..]
+doubleSecond = zipWith (\x y -> if even x then y*2 else y) [1..]
