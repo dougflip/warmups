@@ -46,3 +46,20 @@ toDigits = map digitToInt . show
 
 doubleSecond :: [Int] -> [Int]
 doubleSecond = zipWith (\x y -> if even x then y*2 else y) [1..]
+
+-- mergesort
+mergesort :: Ord a => [a] -> [a]
+mergesort [] = []
+mergesort [x] = [x]
+mergesort xs = mergeTwoLists (mergesort qs) (mergesort rs)
+    where
+        p = (length xs) `quot` 2
+        qs = take p xs
+        rs = drop p xs
+
+mergeTwoLists :: Ord a => [a] -> [a] -> [a]
+mergeTwoLists xs [] = xs
+mergeTwoLists [] ys = ys
+mergeTwoLists (x:xs) (y:ys)
+    | x <= y = x : mergeTwoLists xs (y:ys)
+    | otherwise = y : mergeTwoLists (x:xs) ys
