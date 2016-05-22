@@ -24,7 +24,7 @@ recurseButLast (x:xs) = recurseButLast xs
 
 -- myButLast
 myButLast :: [a] -> a
-myButLast = head . drop 1 . reverse
+myButLast = head . reverse . init
 
 -- recurseElementAt
 recurseElementAt :: [a] -> Int -> a
