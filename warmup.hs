@@ -1,5 +1,4 @@
 import Data.Char
-import Data.List
 
 -- quicksort
 quicksort :: Ord a => [a] -> [a]
@@ -80,6 +79,13 @@ deleteFirst a (x:xs)
     | otherwise = x : deleteFirst a xs
 
 -- insertionSort
-insertionSort :: (Eq a, Ord a) => [a] -> [a]
+insertionSort :: (Ord a) => [a] -> [a]
 insertionSort [] = []
+insertionSort [x] = [x]
 insertionSort (x:xs) = insert x (insertionSort xs)
+
+insert :: Ord a => a -> [a] -> [a]
+insert x [] = [x]
+insert x (y:ys)
+    | x < y = x:y:ys
+    | otherwise = y : (insert x ys)
