@@ -1,4 +1,5 @@
 import Data.Char
+import Data.List
 
 -- quicksort
 quicksort :: Ord a => [a] -> [a]
@@ -77,3 +78,8 @@ deleteFirst _ [] = []
 deleteFirst a (x:xs)
     | a == x = xs
     | otherwise = x : deleteFirst a xs
+
+-- insertionSort
+insertionSort :: (Eq a, Ord a) => [a] -> [a]
+insertionSort [] = []
+insertionSort xs = foldl (\acc x -> insert x acc) [] xs
