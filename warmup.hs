@@ -82,4 +82,4 @@ deleteFirst a (x:xs)
 -- insertionSort
 insertionSort :: (Eq a, Ord a) => [a] -> [a]
 insertionSort [] = []
-insertionSort xs = foldl (\acc x -> insert x acc) [] xs
+insertionSort (x:xs) = insert x (insertionSort xs)
