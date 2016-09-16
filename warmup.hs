@@ -63,3 +63,17 @@ mergeTwoLists [] ys = ys
 mergeTwoLists (x:xs) (y:ys)
     | x <= y = x : mergeTwoLists xs (y:ys)
     | otherwise = y : mergeTwoLists (x:xs) ys
+
+-- selectionSort
+selectionSort :: Ord a => [a] -> [a]
+selectionSort [] = []
+selectionSort xs = smallest : selectionSort unsorted
+    where
+        smallest = minimum xs
+        unsorted = deleteFirst smallest xs
+
+deleteFirst :: Eq a => a -> [a] -> [a]
+deleteFirst _ [] = []
+deleteFirst a (x:xs)
+    | a == x = xs
+    | otherwise = x : deleteFirst a xs
